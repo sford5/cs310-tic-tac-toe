@@ -17,20 +17,24 @@ public class TicTacToeView {
         /* Print the board to the console (see examples) */
         
         /* INSERT YOUR CODE HERE */
-        int width = model.getWidth();
-        System.out.println("");
-        System.out.println("");
-        System.out.print(" ");
-        for (int i = 0; i < width; i++) {
-            System.out.print(i);
+        int w = model.getWidth();
+        StringBuilder s = new StringBuilder();
+        System.out.print("\n\n");
+        s.append("  ");
+        for (int i = 0; i < w; i++) {
+           s.append(i);
         }
-        System.out.println(" ");
-        System.out.println(" ");
-
-        for (int i = 0; i < width; i++) {
-            System.out.println(i + " " + model.getMark(i, i));
+        s.append("\n\n");
+        for (int i = 0; i < w; i++) {
+            s.append(i + " ");
+            for (int j = 0; j < w; j++) {
+                s.append(model.getMark(i, j));
+            }
+            s.append("\n");
         }
+        System.out.println(s.toString());
     
+
 
     }
 
@@ -41,11 +45,11 @@ public class TicTacToeView {
         /* INSERT YOUR CODE HERE */
         if (model.isXTurn()) {
             System.out.println("Player 1 (X) Move: ");
-            System.out.println("Enter the row and column numbers, separated by a space: ");
+            System.out.print("Enter the row and column numbers, separated by a space: ");
         }
         if (model.isXTurn() == false) {
             System.out.println("Player 2 (O) Move: ");
-            System.out.println("Enter the row and column numbers, separated by a space: "); 
+            System.out.print("Enter the row and column numbers, separated by a space: "); 
         }
 
     }
