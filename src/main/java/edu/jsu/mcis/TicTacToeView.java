@@ -57,6 +57,24 @@ public class TicTacToeView extends JPanel implements ActionListener {
         String name = ((JButton) event.getSource()).getName(); // Get button name
         
         // INSERT YOUR CODE HERE
+        char[] c = name.toCharArray();
+        char co = c[7];
+        char r = c[6];
+        int row = Character.getNumericValue(r);
+        int col = Character.getNumericValue(co);
+        int w = model.getWidth();
+
+        model.makeMark(row, col);
+        updateSquares();
+        if (model.getResult() != TicTacToeModel.Result.NONE) {
+            resultLabel.setText(model.getResult().toString().toUpperCase());
+            for (int i = 0; i < w; i++) {
+                for (int j = 0; j < w; j++) {
+                    squares[i][j].setEnabled(false);
+                }
+            }
+        }
+
 
     }
         
@@ -64,6 +82,12 @@ public class TicTacToeView extends JPanel implements ActionListener {
 
         /* Loop through all View buttons and (re)set the text of each button
            to reflect the grid contents (use the Model's "getMark()" method). */
+           int w = model.getWidth();
+           for (int i = 0; i < w; i++) {
+               for (int j = 0; j < w; j++) {
+                   squares[i][j].setText(model.getMark(i, j).toString());
+               }
+           }
 
     }
         
